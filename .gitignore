@@ -1,5 +1,6 @@
 **/build
 **/debug
+**/svd
 **/__repo__
 **/.vscode
 **/CMakePresets.json
