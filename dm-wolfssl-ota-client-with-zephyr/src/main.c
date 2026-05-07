@@ -301,8 +301,26 @@ int startServer(void) {
 
 int main(void)
 {
+<<<<<<< HEAD
     printf("\nRunning wolfSSL example from the %s!\n", CONFIG_BOARD);
 
+=======
+    uint32_t version;
+    unsigned int irq_key;
+    /* Boot partition */
+    uint8_t part = 0;
+
+    printf("\nRunning wolfSSL example from the %s!\n", CONFIG_BOARD);
+
+    k_sched_lock();
+    irq_key = irq_lock();
+    version = wolfBoot_nsc_get_image_version(part);
+    irq_unlock(irq_key);
+    k_sched_unlock();
+
+    printf("Current image version is: %u\n", version);
+
+>>>>>>> 7f305fa16c95912a7f317eac2f8e60e3ac30a76c
     /* Start up the network */
     if (startNetwork() != 0){
         printf("Network Initialization via DHCP Failed");
@@ -325,8 +343,11 @@ int main(void)
             printf("Firmware client has Failed!");
             return 1;
         } else {
+<<<<<<< HEAD
             unsigned int irq_key;
 
+=======
+>>>>>>> 7f305fa16c95912a7f317eac2f8e60e3ac30a76c
             printf("Firmware client completed successfully!\n");
 
             k_sched_lock();
